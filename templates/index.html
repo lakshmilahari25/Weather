@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .weather-icon {
+            width: 100px;
+        }
+        .forecast-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .forecast-card {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="text-center mt-5">
+        <h1>Weather App</h1>
+        <p>Created by <strong>Venkata Lakshmi Lahari Appala</strong></p>
+    </div>
+
+    <form method="POST" class="form-inline justify-content-center mb-5">
+        <input type="text" class="form-control mb-2 mr-sm-2" name="city" placeholder="Enter City">
+        <button type="submit" class="btn btn-primary mb-2">Get Weather</button>
+    </form>
+
+    <form method="GET" class="text-center">
+        <input type="hidden" name="location_based" value="true">
+        <button type="submit" class="btn btn-success mb-4">Use My Location</button>
+    </form>
+
+    <!-- Info Button and Modal -->
+    <div class="text-center">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#infoModal">Info</button>
+    </div>
+
+    <!-- Modal Structure -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="infoModalLabel">About PM Accelerator</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.
+
+                Our Product Manager Accelerator community are ambitious and committed. Through our program they have learnt, honed and developed new PM and leadership skills, giving them a strong foundation for their future endeavours.
+            </p>
+               <p>Learn more about us on our <a href="https://www.linkedin.com/school/productmanagerinterview/about/" target="_blank">LinkedIn Page</a>.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if weather %}
+        <div class="text-center">
+            <h2>Weather in {{ weather.name }}</h2>
+            <p>{{ weather.weather[0].description.title() }}</p>
+            <img src="http://openweathermap.org/img/wn/{{ weather.weather[0].icon }}@2x.png" alt="Weather Icon" class="weather-icon">
+            <p>Temperature: {{ weather.main.temp }}°C</p>
+            <p>Humidity: {{ weather.main.humidity }}%</p>
+            <p>Wind Speed: {{ weather.wind.speed }} m/s</p>
+        </div>
+
+        <hr>
+
+        <div class="forecast-container">
+            {% for item in forecast.list[::8] %}
+                <div class="forecast-card">
+                    <h5>{{ item.dt_txt.split()[0] }}</h5>
+                    <img src="http://openweathermap.org/img/wn/{{ item.weather[0].icon }}@2x.png" alt="Weather Icon" class="weather-icon">
+                    <p>{{ item.weather[0].description.title() }}</p>
+                    <p>Temp: {{ item.main.temp }}°C</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
