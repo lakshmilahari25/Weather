@@ -79,9 +79,18 @@ api_key = "YOUR_API_KEY"
 
 
 
+## Screenshots
+
+### Interface
+![Interface](screenshots/1.png)
+
+### City Weather Search
+![City Weather Search](screenshots/2.png)
+
 ## Contact
 
-For more information, contact Venkata Lakshmi Lahari Appala.
+For more information, contact [333lahari@gmail.com](mailto:333lahari@gmail.com).
+
 
 ## License
 
