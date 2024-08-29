@@ -30,9 +30,59 @@ Additionally, the app includes an "Info" button that provides a brief descriptio
 ### Prerequisites
 Make sure you have Python 3 and `pip` installed on your system. You will also need an API key from [OpenWeatherMap](https://home.openweathermap.org/users/sign_up).
 
-### Installation
+## Setup and Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/lakshmilahari25/Weather.git
-   cd Weather
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/lakshmilahari25/WeatherApp.git
+    ```
+
+2. **Navigate into the project directory**:
+    ```bash
+    cd WeatherApp
+    ```
+
+3. **Install the required dependencies**:
+    ```bash
+    pip install flask requests geocoder
+    ```
+
+4. **Set up your OpenWeatherMap API key**:
+    - Sign up at [OpenWeatherMap](https://openweathermap.org/) and get your API key.
+    - Replace `YOUR_API_KEY` in the `app.py` file with your OpenWeatherMap API key.
+
+## Running the App
+
+1. **Run the Flask application**:
+    ```bash
+    python app.py
+    ```
+
+2. **Access the app**:
+    - Open your browser and go to `http://127.0.0.1:5000/`.
+
+
+
+API Key Setup
+Sign up for an API key at OpenWeatherMap. Add this key to the app.py file by replacing YOUR_API_KEY with your actual key.
+
+
+api_key = "YOUR_API_KEY"
+
+## How It Works
+
+- **Search for Weather**: The user can search for a city's weather or use the geolocation feature to get the current weather.
+- **Weather Details**: Weather details, such as temperature, humidity, and conditions, are fetched from the OpenWeatherMap API.
+- **Weather Icons**: Icons are displayed to represent different weather conditions (e.g., sunny, cloudy, rainy).
+- **5-Day Forecast**: The user can view a 5-day weather forecast.
+- **Info Button**: The "Info" button provides details about PM Accelerator.
+
+
+
+## Contact
+
+For more information, contact Venkata Lakshmi Lahari Appala.
+
+## License
+
+This project is licensed under the MIT License.
